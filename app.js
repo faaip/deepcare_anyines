@@ -5,7 +5,7 @@ function setup() {
   createCanvas(window.innerWidth-16, window.innerHeight-16);
   background(130, 50, 70);
   // specify multiple formats for different browsers
-  backgroundVideo = createVideo(['assets/video_bg.mp4' /*, 'assets/video_bg.mov'*/ ]);
+  backgroundVideo = createVideo(['assets/videos/video_bg.mp4' /*, 'assets/video_bg.mov'*/ ]);
   backgroundVideo.hide();
   backgroundVideo.loop();
 

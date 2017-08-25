@@ -3,6 +3,8 @@
 .AppleDouble
 .LSOverride
 
+/assets/videos/
+
 # Icon must end with two \r
 Icon
 
@@ -24,4 +26,3 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
-
