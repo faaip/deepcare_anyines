@@ -1,54 +1,96 @@
 var backgroundVideo;
 var soundPlayer;
 var borderPadding = 16;
-var font;
 
-function preload(){
-  font = loadFont('assets/Aspire-DemiBold.ttf');
+// Text stuff
+var font
+var opacity = 0;
+var fadingIn = true;
+var textIndex = 0;
+var fontSize = 48;
+var fadeInSpeed = 0.9;
+var fadeOutSpeed = 5.90;
+var textPosX, textPosY;
+var textStrings = ["First, tell me what you're struggling with.", "(Be specific, 3 sentences max!)",
+    "Now, what’s your most negative take on this?", "What is the darkest thought you have about this? What goes through your mind?", "(1 sentence max, please)", "Nice!", "Ready to send this?", "Reply or tap below for help.", "OK, first describe a situation that’s bothering you."
+]
+
+
+function preload() {
+    font = loadFont('assets/Aspire-DemiBold.ttf');
 }
 
 function setup() {
-  createCanvas(window.innerWidth-borderPadding, window.innerHeight-borderPadding);
-  background(130, 50, 70);
-  // specify multiple formats for different browsers
-  backgroundVideo = createVideo(['assets/videos/video_bg_320x180.mp4' /*, 'assets/video_bg.mov'*/ ]);
-  backgroundVideo.hide();
-  backgroundVideo.loop();
+    createCanvas(window.innerWidth - borderPadding, window.innerHeight - borderPadding);
+    background(130, 50, 70);
+    // specify multiple formats for different browsers
+    backgroundVideo = createVideo(['assets/videos/video_bg_320x180.mp4' /*, 'assets/video_bg.mov'*/ ]);
+    backgroundVideo.hide();
+    backgroundVideo.loop();
 
-  // Add logo to top-left corner
-  var logo;
-  logo = document.createElement('img');
-  logo.className = "logo";
-  logo.alt = 'Anyines_logo';
-  logo.style.opacity = '1.0';
-  logo.onclick = function() {
-    window.open('https://anyines.bandcamp.com');
-  };
-  logo.src = "assets/LOGO_silver.png";
-  // logo.src = "assets/anyines_logo.svg";
-  document.body.appendChild(logo);
+    // Add logo to top-left corner
+    var logo;
+    logo = document.createElement('img');
+    logo.className = "logo";
+    logo.alt = 'Anyines_logo';
+    logo.style.opacity = '1.0';
+    logo.onclick = function() {
+        window.open('https://anyines.bandcamp.com');
+    };
+    logo.src = "assets/LOGO_silver.png";
+    // logo.src = "assets/anyines_logo.svg";
+    document.body.appendChild(logo);
 
-  // Set window title
-  document.title = " D E E P   C A R E ";
+    // Set window title
+    document.title = " D E E P   C A R E ";
 
-  // Set timed call-back from changing text
-  window.setInterval(changeText,3000);
+    // Init text position
+    textPosX = width / 2;
+    textPosY = height / 2;
 }
 
 function draw() {
-  image(backgroundVideo, 0,0, width, height); // draw the video frame to canvas
+    image(backgroundVideo, 0, 0, width, height); // draw the video frame to canvas
+
+    fill(255,opacity);
+    textFont(font, fontSize);
+    text(textStrings[textIndex], textPosX, textPosY);
+
+
+    updateText();
 }
 
-var drawnText;
+function updateText() {
 
-function drawText(){
-  text(drawnText,400,400);
-}
+    if (fadingIn) {
+        opacity += fadeInSpeed;
 
-function changeText(){
+        if (opacity > 230) {
+            fadingIn = false;
+        }
+    } else {
+        opacity -= fadeOutSpeed;;
+    }
+
+    if (opacity < 5 && !fadingIn) {
+        // Set to fade in again
+        fadingIn = true;
+
+        // Get next text
+        if (textIndex >= textStrings.length - 1) {
+            textIndex = 1;
+        } else {
+            textIndex++;
+        }
+
+        // Position
+        textSize(fontSize);
+        textPosX = Math.floor((Math.random() * (width-textWidth(textStrings[textIndex])) ) + 1);;
+        textPosY = Math.floor((Math.random() * (height-60)) + 60);
+    }
 
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth-borderPadding, windowHeight-borderPadding);
+    resizeCanvas(windowWidth - borderPadding, windowHeight - borderPadding);
 }
