@@ -11,7 +11,7 @@ function setup() {
   createCanvas(window.innerWidth-borderPadding, window.innerHeight-borderPadding);
   background(130, 50, 70);
   // specify multiple formats for different browsers
-  backgroundVideo = createVideo(['assets/videos/video_bg_640x360.mp4' /*, 'assets/video_bg.mov'*/ ]);
+  backgroundVideo = createVideo(['assets/videos/video_bg_320x180.mp4' /*, 'assets/video_bg.mov'*/ ]);
   backgroundVideo.hide();
   backgroundVideo.loop();
 
