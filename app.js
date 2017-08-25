@@ -12,7 +12,7 @@ var fadeInSpeed = 0.9;
 var fadeOutSpeed = 5.90;
 var textPosX, textPosY;
 var textStrings = ["First, tell me what you're struggling with.", "(Be specific, 3 sentences max!)",
-    "Now, what’s your most negative take on this?", "What is the darkest thought you have about this? What goes through your mind?", "(1 sentence max, please)", "Nice!", "Ready to send this?", "Reply or tap below for help.", "OK, first describe a situation that’s bothering you."
+    "Now, what's your most negative take on this?", "What is the darkest thought you have about this? What goes through your mind?", "(1 sentence max, please)", "Nice!", "Ready to send this?", "Reply or tap below for help.", "OK, first describe a situation that's bothering you."
 ]
 
 
