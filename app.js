@@ -2,12 +2,12 @@ var backgroundVideo;
 var soundPlayer
 
 function setup() {
-  createCanvas(window.innerWidth+15, window.innerHeight+15);
+  createCanvas(window.innerWidth-16, window.innerHeight-16);
+  background(130, 50, 70);
   // specify multiple formats for different browsers
   backgroundVideo = createVideo(['assets/video_bg.mp4' /*, 'assets/video_bg.mov'*/ ]);
   backgroundVideo.hide();
   backgroundVideo.loop();
-
 
   // Add logo to top-left corner
   var logo;
@@ -16,7 +16,7 @@ function setup() {
   logo.alt = 'Anyines_logo';
   logo.style.opacity = '1.0';
   logo.onclick = function() {
-    window.open('http://tollund.cc');
+    window.open('https://anyines.bandcamp.com');
   };
   logo.src = "assets/LOGO_silver.png";
   // logo.src = "assets/anyines_logo.svg";
@@ -25,11 +25,22 @@ function setup() {
   // Set window title
   document.title = " D E E P   C A R E ";
 
-
+  // Set timed call-back from changing text
+  window.setInterval(changeText,3000);
 }
 
 function draw() {
-  image(backgroundVideo, 0, 0, width, height); // draw the video frame to canvas
+  image(backgroundVideo, 0,0, width, height); // draw the video frame to canvas
+}
+
+var drawnText;
+
+function drawText(){
+  text(drawnText,400,400);
+}
+
+function changeText(){
+
 }
 
 function windowResized() {
