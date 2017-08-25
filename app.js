@@ -1,11 +1,12 @@
 var backgroundVideo;
-var soundPlayer
+var soundPlayer;
+var borderPadding = 16;
 
 function setup() {
-  createCanvas(window.innerWidth-16, window.innerHeight-16);
+  createCanvas(window.innerWidth-borderPadding, window.innerHeight-borderPadding);
   background(130, 50, 70);
   // specify multiple formats for different browsers
-  backgroundVideo = createVideo(['assets/videos/video_bg.mp4' /*, 'assets/video_bg.mov'*/ ]);
+  backgroundVideo = createVideo(['assets/videos/video_bg_640x360.mp4' /*, 'assets/video_bg.mov'*/ ]);
   backgroundVideo.hide();
   backgroundVideo.loop();
 
@@ -44,5 +45,5 @@ function changeText(){
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  resizeCanvas(windowWidth-borderPadding, windowHeight-borderPadding);
 }
