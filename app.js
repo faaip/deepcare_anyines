@@ -17,6 +17,20 @@ var textStrings = ["First, tell me what you're struggling with.", "(Be specific,
 
 
 function preload() {
+  // Add logo to top-left corner
+  var logo;
+  logo = document.createElement('img');
+  logo.className = "logo";
+  logo.alt = 'Anyines_logo';
+  logo.style.opacity = '1.0';
+  logo.onclick = function() {
+      window.open('https://anyines.bandcamp.com');
+  };
+  logo.src = "assets/LOGO_silver.png";
+  // logo.src = "assets/anyines_logo.svg";
+  document.body.appendChild(logo);
+
+  // Load font
     font = loadFont('assets/Aspire-DemiBold.ttf');
 }
 
@@ -27,19 +41,6 @@ function setup() {
     backgroundVideo = createVideo(['assets/videos/video_bg_320x180.mp4' /*, 'assets/video_bg.mov'*/ ]);
     backgroundVideo.hide();
     backgroundVideo.loop();
-
-    // Add logo to top-left corner
-    var logo;
-    logo = document.createElement('img');
-    logo.className = "logo";
-    logo.alt = 'Anyines_logo';
-    logo.style.opacity = '1.0';
-    logo.onclick = function() {
-        window.open('https://anyines.bandcamp.com');
-    };
-    logo.src = "assets/LOGO_silver.png";
-    // logo.src = "assets/anyines_logo.svg";
-    document.body.appendChild(logo);
 
     // Set window title
     document.title = " D E E P   C A R E ";
@@ -52,11 +53,12 @@ function setup() {
 function draw() {
     image(backgroundVideo, 0, 0, width, height); // draw the video frame to canvas
 
+    // Draw text
     fill(255,opacity);
     textFont(font, fontSize);
     text(textStrings[textIndex], textPosX, textPosY);
 
-
+    // Update text
     updateText();
 }
 
