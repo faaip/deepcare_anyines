@@ -1,6 +1,11 @@
 var backgroundVideo;
 var soundPlayer;
 var borderPadding = 16;
+var font;
+
+function preload(){
+  font = loadFont('assets/Aspire-DemiBold.ttf');
+}
 
 function setup() {
   createCanvas(window.innerWidth-borderPadding, window.innerHeight-borderPadding);
