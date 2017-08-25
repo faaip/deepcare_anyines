@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.12/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.12/addons/p5.dom.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
@@ -8,13 +9,19 @@
     <script>
         window.scrollTo(15, 15);
     </script>
-
-    <iframe width="100%" ID="hideframe" height="400" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/228116448&amp;color=ff5500&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true">
-</iframe>
 </head>
 
 <body>
-
+  <script>
+      // Create iFrame
+      var iframe = document.createElement('iframe');
+      var start_track = Math.floor((Math.random() * 12) + 1);;
+      iframe.width = "100%"
+      iframe.height = "100";
+      iframe.id = "hideframe"
+      iframe.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/331768602%3Fsecret_token%3Ds-d27yO&amp;color=ff5500&amp;auto_play=true&amp;start_track=" + start_track + "&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true;"
+      document.body.appendChild(iframe);
+  </script>
 </body>
 
 </html>
