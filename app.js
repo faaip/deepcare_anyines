@@ -1,13 +1,13 @@
 var backgroundVideo;
 var soundPlayer;
-var borderPadding = 16;
+var borderPadding = 0;
 
 // Text stuff
 var font
 var opacity = 0;
 var fadingIn = true;
 var textIndex = 0;
-var fontSize = 48;
+var fontSize = 20;
 var fadeInSpeed = 0.9;
 var fadeOutSpeed = 5.90;
 var textPosX, textPosY;
@@ -16,9 +16,10 @@ var textStrings = ["First, tell me what you're struggling with.", "(Be specific,
 ]
 
 function preload() {
+
     // load soundcloud player
     var iframe = document.createElement('iframe');
-    var start_track = Math.floor((Math.random() * 12) + 1);;
+    var start_track = Math.floor((Math.random() * 12) + 1);
     iframe.width = "100%"
     iframe.height = "100";
     iframe.id = "hideframe"
@@ -39,75 +40,75 @@ function preload() {
     document.body.appendChild(logo);
 
 
-        // Load font
-        font = loadFont('assets/Aspire-DemiBold.ttf');
+    // Load font
+    font = loadFont('assets/BodoniFLF-Italic.ttf');
+}
+
+var background_img;
+
+function setup() {
+    createCanvas(window.innerWidth - borderPadding, window.innerHeight - borderPadding);
+    background(130, 50, 70);
+
+    background_img = loadImage("assets/background_image.png");
+    image(background_img, width, height);
+
+    // Set window title
+    document.title = " D E E P   C A R E ";
+
+    // Init text position
+    textPosX = width / 2;
+    textPosY = height / 2;
+    // specify multiple formats for different browsers
+    backgroundVideo = createVideo(['assets/videos/video_bg_320x180.mp4' /*, 'assets/video_bg.mov'*/ ]);
+    backgroundVideo.hide();
+    backgroundVideo.loop();
+    backgroundVideo
+}
+
+function draw() {
+    image(backgroundVideo, 0, 0, width, height); // draw the video frame to canvas
+
+    // Draw text
+    fill(255, opacity);
+    textFont(font, fontSize);
+    text(textStrings[textIndex], textPosX, textPosY);
+
+    // Update text
+    updateText();
+}
+
+function updateText() {
+
+    if (fadingIn) {
+        opacity += fadeInSpeed;
+
+        if (opacity > 230) {
+            fadingIn = false;
+        }
+    } else {
+        opacity -= fadeOutSpeed;;
     }
 
-    var background_img;
+    if (opacity < 5 && !fadingIn) {
+        // Set to fade in again
+        fadingIn = true;
 
-    function setup() {
-        createCanvas(window.innerWidth - borderPadding, window.innerHeight - borderPadding);
-        background(130, 50, 70);
-
-        background_img = loadImage("assets/background_image.png");
-        image(background_img, width, height);
-
-        // Set window title
-        document.title = " D E E P   C A R E ";
-
-        // Init text position
-        textPosX = width / 2;
-        textPosY = height / 2;
-        // specify multiple formats for different browsers
-        backgroundVideo = createVideo(['assets/videos/video_bg_320x180.mp4' /*, 'assets/video_bg.mov'*/ ]);
-        backgroundVideo.hide();
-        backgroundVideo.loop();
-        backgroundVideo
-    }
-
-    function draw() {
-        image(backgroundVideo, 0, 0, width, height); // draw the video frame to canvas
-
-        // Draw text
-        fill(255, opacity);
-        textFont(font, fontSize);
-        text(textStrings[textIndex], textPosX, textPosY);
-
-        // Update text
-        updateText();
-    }
-
-    function updateText() {
-
-        if (fadingIn) {
-            opacity += fadeInSpeed;
-
-            if (opacity > 230) {
-                fadingIn = false;
-            }
+        // Get next text
+        if (textIndex >= textStrings.length - 1) {
+            textIndex = 1;
         } else {
-            opacity -= fadeOutSpeed;;
+            textIndex++;
         }
 
-        if (opacity < 5 && !fadingIn) {
-            // Set to fade in again
-            fadingIn = true;
-
-            // Get next text
-            if (textIndex >= textStrings.length - 1) {
-                textIndex = 1;
-            } else {
-                textIndex++;
-            }
-
-            // Position
-            textSize(fontSize);
-            textPosX = Math.floor((Math.random() * (width - textWidth(textStrings[textIndex]))) + 1);;
-            textPosY = Math.floor((Math.random() * (height - 60)) + 60);
-        }
-
+        // Position
+        textSize(fontSize);
+        textPosX = Math.floor((Math.random() * (width - textWidth(textStrings[textIndex]))) + 1);;
+        textPosY = Math.floor((Math.random() * (height - 60)) + 60);
     }
 
-    function windowResized() {
-        resizeCanvas(windowWidth - borderPadding, windowHeight - borderPadding);
-    }
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth - borderPadding, windowHeight - borderPadding);
+}
