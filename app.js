@@ -90,9 +90,10 @@ function updateText() {
         opacity -= fadeOutSpeed;;
     }
 
-    if (opacity < 5 && !fadingIn) {
+    if (opacity < -900 && !fadingIn) {
         // Set to fade in again
         fadingIn = true;
+        opacity = 0;
 
         // Get next text
         if (textIndex >= textStrings.length - 1) {
