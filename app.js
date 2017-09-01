@@ -20,12 +20,12 @@ function preload() {
     if (!isTouchDevice()) {
         // load soundcloud player
         var iframe = document.createElement('iframe');
-        var start_track = Math.floor((Math.random() * 12) + 1);
+        var start_track = Math.floor((Math.random() * 2) + 0);
         iframe.width = "100%"
         iframe.height = "100";
         iframe.id = "hideframe"
         // iframe.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/331768602%3Fsecret_token%3Ds-d27yO&amp;color=ff5500&amp;auto_play=true&amp;start_track=" + start_track + "&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true;"
-        iframe.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/339737358%3Fsecret_token%3Ds-AQv2I&amp;color=ff5500&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"
+        iframe.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/349500137%3Fsecret_token%3Ds-QpEeB&amp;color=ff5500&amp;auto_play=true&amp;start_track=" + start_track + "&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true;"
         document.body.appendChild(iframe);
     } else {
         alert('touch device')
